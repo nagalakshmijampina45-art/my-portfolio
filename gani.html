@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Accelerator</title>
+
+    <style>
+
+        :root{
+            --primary-color:#0a2a66;
+            --secondary-color:#f4b400;
+            --text-color:white;
+        }
+
+        body{
+            margin:0;
+            font-family:Arial,sans-serif;
+        }
+
+        nav{
+            background-color:var(--primary-color);
+            color:white;
+            display:flex;
+            justify-content:space-between;
+            padding:15px;
+        }
+
+        nav ul{
+            list-style:none;
+            display:flex;
+        }
+
+        nav ul li{
+            margin-left:20px;
+        }
+
+        nav ul li a{
+            color:white;
+            text-decoration:none;
+        }
+
+        header{
+            text-align:center;
+            padding:40px;
+        }
+
+        button{
+            background-color:var(--secondary-color);
+            padding:10px 20px;
+            border:none;
+            border-radius:5px;
+        }
+
+        .grid-container{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:20px;
+            padding:20px;
+        }
+
+        .card{
+            border:1px solid gray;
+            padding:20px;
+            text-align:center;
+        }
+
+        .flex-container{
+            display:flex;
+            justify-content:space-around;
+            padding:20px;
+        }
+
+        .box{
+            background:orange;
+            color:white;
+            padding:20px;
+        }
+
+        table{
+            width:80%;
+            margin:auto;
+            border-collapse:collapse;
+        }
+
+        table,th,td{
+            border:1px solid black;
+        }
+
+        th,td{
+            padding:10px;
+            text-align:center;
+        }
+
+        form{
+            width:50%;
+            margin:auto;
+            display:flex;
+            flex-direction:column;
+        }
+
+        input,textarea{
+            margin:10px 0;
+            padding:10px;
+        }
+
+        footer{
+            background-color:var(--primary-color);
+            color:white;
+            padding:20px;
+            text-align:center;
+            margin-top:20px;
+        }
+
+        @media(max-width:768px){
+
+            .grid-container{
+                grid-template-columns:1fr;
+            }
+
+            .flex-container{
+                flex-direction:column;
+                gap:10px;
+            }
+
+            form{
+                width:90%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<nav>
+
+    <h2>Career Accelerator</h2>
+
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Courses</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+
+</nav>
+
+<header>
+
+    <h1>Your Career Journey Deserves a Clear Path</h1>
+
+    <p>
+        Career Accelerator helps students discover their strengths and prepare for future opportunities.
+    </p>
+
+    <button>Find Your Best Path</button>
+
+</header>
+
+<section class="grid-container">
+
+    <div class="card">
+        <h3>Career Guidance</h3>
+        <p>Get expert career guidance.</p>
+    </div>
+
+    <div class="card">
+        <h3>Skill Development</h3>
+        <p>Learn modern career skills.</p>
+    </div>
+
+    <div class="card">
+        <h3>Interview Preparation</h3>
+        <p>Prepare confidently for interviews.</p>
+    </div>
+
+</section>
+
+<section class="flex-container">
+
+    <div class="box">HTML</div>
+    <div class="box">CSS</div>
+    <div class="box">JavaScript</div>
+
+</section>
+
+<h2 style="text-align:center;">Student Details</h2>
+
+<table>
+
+    <tr>
+        <th>Name</th>
+        <th>Course</th>
+        <th>Year</th>
+    </tr>
+
+    <tr>
+        <td>Nagalakshmi</td>
+        <td>B.Tech</td>
+        <td>4th Year</td>
+    </tr>
+
+    <tr>
+        <td>Ravi</td>
+        <td>B.Tech</td>
+        <td>3rd Year</td>
+    </tr>
+
+</table>
+
+<h2 style="text-align:center;">Contact Form</h2>
+
+<form>
+
+    <input type="text" placeholder="Enter Name">
+
+    <input type="email" placeholder="Enter Email">
+
+    <textarea rows="5" placeholder="Enter Message"></textarea>
+
+    <button type="submit">Submit</button>
+
+</form>
+
+<footer>
+
+    <h3>Career Accelerator</h3>
+
+    <p>Clarity. Preparation. Confidence.</p>
+
+    <p>© 2026 All Rights Reserved</p>
+
+</footer>
+
+</body>
+</html>

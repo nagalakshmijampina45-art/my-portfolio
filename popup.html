@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Form</title>
+
+    <style>
+
+        body{
+            font-family:Arial,sans-serif;
+            background-color:#f4f4f4;
+            padding:20px;
+        }
+
+        form{
+            width:400px;
+            margin:auto;
+            background:white;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0 0 10px gray;
+        }
+
+        h2{
+            text-align:center;
+            color:blue;
+        }
+
+        input{
+            width:100%;
+            padding:8px;
+            margin-top:5px;
+            margin-bottom:10px;
+        }
+
+        button{
+            background-color:blue;
+            color:white;
+            border:none;
+            padding:10px;
+            width:100%;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background-color:darkblue;
+        }
+
+    </style>
+
+    <script>
+
+        function submitForm(){
+
+            let userName = prompt("Enter Your Name Again:");
+
+            if(userName == null || userName == ""){
+                alert("Name is Required!");
+                return false;
+            }
+
+            let result = confirm("Are you sure you want to submit the form?");
+
+            if(result){
+
+                alert("Form Submitted Successfully!\nWelcome " + userName);
+
+                return true;
+            }
+
+            else{
+
+                alert("Submission Cancelled!");
+
+                return false;
+            }
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <form onsubmit="return submitForm()">
+
+        <h2>Student Registration Form</h2>
+
+        <label for="username">Name:</label><br>
+        <input type="text" id="username" name="username" placeholder="Enter Username" required><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" placeholder="Enter Email" required><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" placeholder="Enter Password" required><br>
+
+        <label for="phone">Phone Number:</label><br>
+        <input type="number" id="phone" name="phone" placeholder="Enter Phone Number" required><br>
+
+        <p>Subscribe:</p>
+
+        <input type="checkbox" name="subscribe" value="yes"> YES
+        <input type="checkbox" name="subscribe" value="no"> NO
+
+        <br><br>
+
+        <p>Gender:</p>
+
+        <input type="radio" name="gender" value="male"> Male
+        <input type="radio" name="gender" value="female"> Female
+
+        <br><br>
+
+        <button type="submit">Login</button>
+
+    </form>
+
+</body>
+</html>

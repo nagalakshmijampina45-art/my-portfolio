@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Career Accelerator Pro</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:linear-gradient(135deg,#020617,#0f172a,#1e3a8a,#7c3aed);
+color:white;
+overflow-x:hidden;
+}
+
+.sidebar{
+width:270px;
+height:100vh;
+background:#071330;
+position:fixed;
+left:0;
+top:0;
+padding:25px;
+overflow-y:auto;
+box-shadow:5px 0 20px rgba(0,0,0,.4);
+z-index:1000;
+}
+
+.brand{
+text-align:center;
+margin-bottom:30px;
+}
+
+.brand img{
+width:80px;
+height:80px;
+border-radius:50%;
+background:white;
+padding:8px;
+}
+
+.brand h2{
+margin-top:10px;
+font-size:26px;
+color:#38bdf8;
+}
+
+.sidebar ul{
+list-style:none;
+padding:0;
+}
+
+.sidebar ul li{
+margin-bottom:10px;
+}
+
+.sidebar ul li a{
+display:block;
+padding:14px;
+text-decoration:none;
+color:white;
+font-weight:600;
+border-radius:12px;
+transition:.3s;
+}
+
+.sidebar ul li a:hover{
+background:linear-gradient(135deg,#2563eb,#8b5cf6,#ec4899);
+transform:translateX(5px);
+}
+
+.main{
+margin-left:270px;
+width:calc(100% - 270px);
+}
+
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 30px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(10px);
+position:sticky;
+top:0;
+z-index:999;
+}
+
+.top-left{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.top-left img{
+width:50px;
+height:50px;
+border-radius:50%;
+background:white;
+padding:5px;
+}
+
+.search-box input{
+width:350px;
+padding:12px;
+border:none;
+outline:none;
+border-radius:30px;
+}
+
+.login-btn{
+padding:12px 28px;
+background:linear-gradient(135deg,#06b6d4,#8b5cf6);
+color:white;
+text-decoration:none;
+border-radius:30px;
+font-weight:bold;
+}
+
+.hero{
+padding:100px 40px;
+text-align:center;
+background:linear-gradient(135deg,#2563eb,#7c3aed,#ec4899);
+}
+
+.hero h1{
+font-size:60px;
+font-weight:bold;
+}
+
+.hero p{
+font-size:22px;
+margin-top:15px;
+}
+
+.section-title{
+text-align:center;
+font-size:40px;
+font-weight:bold;
+margin:60px 0 30px;
+}
+
+.card-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+padding:25px;
+}
+
+.card-custom{
+background:white;
+color:black;
+padding:25px;
+border-radius:20px;
+transition:.3s;
+box-shadow:0 10px 20px rgba(0,0,0,.2);
+}
+
+.card-custom:hover{
+transform:translateY(-10px);
+background:linear-gradient(135deg,#2563eb,#8b5cf6,#ec4899);
+color:white;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:30px;
+}
+
+.stat-box{
+background:rgba(255,255,255,.1);
+padding:25px;
+border-radius:20px;
+text-align:center;
+backdrop-filter:blur(10px);
+}
+
+.stat-box h2{
+font-size:40px;
+color:#38bdf8;
+}
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.8);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.popup:target{
+display:flex;
+}
+
+.popup-content{
+background:white;
+width:400px;
+padding:30px;
+border-radius:20px;
+color:black;
+position:relative;
+}
+
+.popup-content input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:10px;
+}
+
+.popup-content button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+background:#2563eb;
+color:white;
+}
+
+
+.close-btn{
+position:absolute;
+top:10px;
+right:15px;
+font-size:30px;
+text-decoration:none;
+color:black;
+}
+
+.footer{
+background:#071330;
+text-align:center;
+padding:30px;
+margin-top:50px;
+}
+.flex-demo{
+display:flex;
+justify-content:space-evenly;
+align-items:center;
+flex-wrap:wrap;
+gap:20px;
+padding:20px;
+}
+
+.box{
+width:120px;
+height:120px;
+background:#38bdf8;
+display:flex;
+justify-content:center;
+align-items:center;
+border-radius:15px;
+font-size:25px;
+font-weight:bold;
+}
+
+.grid-demo{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+padding:20px;
+}
+
+.grid-demo div{
+background:white;
+color:black;
+padding:30px;
+border-radius:15px;
+text-align:center;
+}
+
+.responsive-img{
+max-width:100%;
+height:auto;
+border-radius:20px;
+padding:20px;
+}
+
+.transition-btn{
+padding:15px 30px;
+border:none;
+background:#2563eb;
+color:white;
+border-radius:10px;
+transition:all .3s ease;
+}
+
+.transition-btn:hover{
+transform:scale(1.1);
+background:#8b5cf6;
+}
+@media(max-width:900px){
+
+.sidebar{
+display:none;
+}
+
+.main{
+margin-left:0;
+width:100%;
+}
+
+.search-box input{
+width:180px;
+}
+
+.hero h1{
+font-size:35px;
+}
+
+.section-title{
+font-size:30px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<div class="brand">
+
+<img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+
+<h2>Career Accelerator</h2>
+
+</div>
+
+<ul>
+
+<li><a href="#dashboard">🏠 Dashboard</a></li>
+<li><a href="#roadmap">🎯 Career Roadmap</a></li>
+<li><a href="#resume">📝 Resume Builder</a></li>
+<li><a href="#interviews">🎤 Mock Interviews</a></li>
+<li><a href="#courses">📚 Courses</a></li>
+<li><a href="#certifications">🏆 Certifications</a></li>
+<li><a href="#mentors">👨‍🏫 Mentors</a></li>
+<li><a href="#internships">💼 Internships</a></li>
+<li><a href="#progress">📈 Progress</a></li>
+<li><a href="#contact">📞 Contact</a></li>
+
+</ul>
+
+</div>
+
+<div class="main">
+
+<div class="topbar">
+
+<div class="top-left">
+<img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+<h3>Career Accelerator</h3>
+</div>
+
+<div class="search-box">
+<input type="text" placeholder="Search Courses, Internships...">
+</div>
+
+<div>
+<a href="#login-popup" class="login-btn">Login</a>
+</div>
+
+</div>
+
+<section class="hero" id="dashboard">
+
+<h1>Your Career Journey Starts Here</h1>
+
+<p>
+Learn Skills • Build Projects • Crack Interviews • Get Hired
+</p>
+
+</section>
+
+<section>
+
+<h2 class="section-title">
+Dashboard Overview
+</h2>
+
+<div class="stats">
+
+<div class="stat-box">
+<h2>150+</h2>
+<p>Courses</p>
+</div>
+
+<div class="stat-box">
+<h2>500+</h2>
+<p>Students</p>
+</div>
+
+<div class="stat-box">
+<h2>80+</h2>
+<p>Mentors</p>
+</div>
+
+<div class="stat-box">
+<h2>200+</h2>
+<p>Internships</p>
+</div>
+
+</div>
+
+</section>
+<section id="roadmap">
+
+<h2 class="section-title">
+Career Roadmap
+</h2>
+
+<div class="card-grid">
+
+<div class="card-custom">
+<h3>Step 1</h3>
+<p>Learn HTML & CSS Fundamentals</p>
+</div>
+
+<div class="card-custom">
+<h3>Step 2</h3>
+<p>Master JavaScript & DOM</p>
+</div>
+
+<div class="card-custom">
+<h3>Step 3</h3>
+<p>Learn Python Programming</p>
+</div>
+
+<div class="card-custom">
+<h3>Step 4</h3>
+<p>Learn SQL & Databases</p>
+</div>
+
+<div class="card-custom">
+<h3>Step 5</h3>
+<p>Build Real Time Projects</p>
+</div>
+
+<div class="card-custom">
+<h3>Step 6</h3>
+<p>Prepare For Placements</p>
+</div>
+
+</div>
+
+</section>
+<section id="flexbox-demo">
+
+<h2 class="section-title">
+Flexbox Demo
+</h2>
+
+<div class="flex-demo">
+
+<div class="box">1</div>
+<div class="box">2</div>
+<div class="box">3</div>
+<div class="box">4</div>
+
+</div>
+
+</section>
+<section id="grid-demo">
+
+<h2 class="section-title">
+Grid Layout Demo
+</h2>
+
+<div class="grid-demo">
+
+<div>A</div>
+<div>B</div>
+<div>C</div>
+<div>D</div>
+<div>E</div>
+<div>F</div>
+
+</div>
+
+</section>
+
+<section id="resume">
+
+<h2 class="section-title">
+Resume Builder
+</h2>
+
+<div class="card-grid">
+
+<div class="card-custom">
+<h3>ATS Friendly Resume</h3>
+<p>Create professional resumes accepted by recruiters.</p>
+</div>
+
+<div class="card-custom">
+<h3>Resume Templates</h3>
+<p>Modern resume templates for freshers.</p>
+</div>
+
+<div class="card-custom">
+<h3>Resume Score</h3>
+<p>Check resume quality and improvements.</p>
+</div>
+
+<div class="card-custom">
+<h3>Resume Keywords</h3>
+<p>Improve ATS ranking using keywords.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="interviews">
+
+<h2 class="section-title">
+Mock Interviews
+</h2>
+
+<div class="card-grid">
+
+<a href="#technical" style="text-decoration:none;">
+<div class="card-custom">
+<h3>Technical Interview</h3>
+<p>Programming & Coding Questions</p>
+</div>
+</a>
+
+<a href="#hr" style="text-decoration:none;">
+<div class="card-custom">
+<h3>HR Interview</h3>
+<p>Communication & Personality Questions</p>
+</div>
+</a>
+
+</div>
+
+</section>
+
+<section id="technical">
+
+<h2 class="section-title">
+Technical Interview Questions
+</h2>
+
+<div class="card-grid">
+
+<div class="card-custom">
+<h3>HTML</h3>
+<p>What is HTML? Explain Semantic Tags.</p>
+</div>
+
+<div class="card-custom">
+<h3>CSS</h3>
+<p>Difference Between Flexbox and Grid.</p>
+</div>
+
+<div class="card-custom">
+<h3>JavaScript</h3>
+<p>Explain DOM Manipulation.</p>
+</div>
+
+<div class="card-custom">
+<h3>Python</h3>
+<p>Difference Between List and Tuple.</p>
+</div>
+
+<div class="card-custom">
+<h3>SQL</h3>
+<p>What is Primary Key and Foreign Key?</p>
+</div>
+
+<div class="card-custom">
+<h3>DBMS</h3>
+<p>Explain Normalization.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="hr">
+
+<h2 class="section-title">
+HR Interview Questions
+</h2>
+
+<div class="card-grid">
+
+<div class="card-custom">
+<h3>Tell Me About Yourself</h3>
+<p>Professional Introduction.</p>
+</div>
+
+<div class="card-custom">
+<h3>Why Should We Hire You?</h3>
+<p>Showcase Your Strengths.</p>
+</div>
+
+<div class="card-custom">
+<h3>Strengths & Weaknesses</h3>
+<p>Self Assessment Questions.</p>
+</div>
+
+<div class="card-custom">
+<h3>Where Do You See Yourself?</h3>
+<p>Future Career Goals.</p>
+</div>
+
+<div class="card-custom">
+<h3>Leadership Skills</h3>
+<p>Team Management Discussion.</p>
+</div>
+
+<div class="card-custom">
+<h3>Conflict Resolution</h3>
+<p>Workplace Scenarios.</p>
+</div>
+
+</div>
+
+</section>
+<section>
+
+<h2 class="section-title">
+Responsive Image
+</h2>
+
+<img
+src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3"
+class="responsive-img">
+
+</section>
+<section id="courses">
+
+<h2 class="section-title">
+Popular Courses
+</h2>
+
+<div class="card-grid">
+
+<div class="card-custom">
+<h3>HTML & CSS</h3>
+<p>Frontend Development Basics</p>
+</div>
+
+<div class="card-custom">
+<h3>JavaScript</h3>
+<p>Interactive Websites</p>
+</div>
+
+<div class="card-custom">
+<h3>Python</h3>
+<p>Programming Fundamentals</p>
+</div>
+
+<div class="card-custom">
+<h3>SQL</h3>
+<p>Database Management</p>
+</div>
+
+<div class="card-custom">
+<h3>Machine Learning</h3>
+<p>AI & Data Science</p>
+</div>
+
+<div class="card-custom">
+<h3>Web Development</h3>
+<p>Full Stack Development</p>
+</div>
+
+<div class="card-custom">
+<h3>Cloud Computing</h3>
+<p>AWS & Azure Basics</p>
+</div>
+
+<div class="card-custom">
+<h3>Data Structures</h3>
+<p>Interview Preparation</p>
+</div>
+
+</div>
+
+</section>
+<section id="certifications">
+
+<h2 class="section-title">
+Certifications
+</h2>
+
+<div class="card-grid">
+
+<div class="card-custom">
+<h3>Python Certification</h3>
+<p>Programming & Problem Solving</p>
+</div>
+
+<div class="card-custom">
+<h3>Web Development</h3>
+<p>Frontend & Backend Skills</p>
+</div>
+
+<div class="card-custom">
+<h3>SQL Certification</h3>
+<p>Database Management</p>
+</div>
+
+<div class="card-custom">
+<h3>AI Certification</h3>
+<p>Machine Learning Fundamentals</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="mentors">
+
+<h2 class="section-title">
+Expert Mentors
+</h2>
+
+<div class="card-grid">
+
+<div class="card-custom">
+<h3>John Smith</h3>
+<p>Senior Software Engineer</p>
+</div>
+
+<div class="card-custom">
+<h3>Sarah Johnson</h3>
+<p>Data Scientist</p>
+</div>
+
+<div class="card-custom">
+<h3>David Kumar</h3>
+<p>AI Engineer</p>
+</div>
+
+<div class="card-custom">
+<h3>Anjali Sharma</h3>
+<p>Cloud Architect</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="internships">
+
+<h2 class="section-title">
+Internship Opportunities
+</h2>
+
+<div class="card-grid">
+
+<div class="card-custom">
+<h3>Frontend Developer Intern</h3>
+<p>Remote • ₹15,000 Stipend</p>
+</div>
+
+<div class="card-custom">
+<h3>Python Developer Intern</h3>
+<p>Hybrid • ₹20,000 Stipend</p>
+</div>
+
+<div class="card-custom">
+<h3>Data Analyst Intern</h3>
+<p>Remote • ₹18,000 Stipend</p>
+</div>
+
+<div class="card-custom">
+<h3>AI Intern</h3>
+<p>Remote • ₹25,000 Stipend</p>
+</div>
+
+</div>
+
+</section>
+<section>
+
+<h2 class="section-title">
+Bootstrap Grid
+</h2>
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-md-4">
+<div class="card p-3">Column 1</div>
+</div>
+
+<div class="col-md-4">
+<div class="card p-3">Column 2</div>
+</div>
+
+<div class="col-md-4">
+<div class="card p-3">Column 3</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="progress">
+
+<h2 class="section-title">
+Learning Progress
+</h2>
+
+<div class="container">
+
+<div class="mb-4">
+<h5>HTML</h5>
+<div class="progress">
+<div class="progress-bar bg-success" style="width:90%">90%</div>
+</div>
+</div>
+
+<div class="mb-4">
+<h5>CSS</h5>
+<div class="progress">
+<div class="progress-bar bg-info" style="width:85%">85%</div>
+</div>
+</div>
+
+<div class="mb-4">
+<h5>Python</h5>
+<div class="progress">
+<div class="progress-bar bg-warning" style="width:80%">80%</div>
+</div>
+</div>
+
+<div class="mb-4">
+<h5>SQL</h5>
+<div class="progress">
+<div class="progress-bar bg-danger" style="width:75%">75%</div>
+</div>
+</div>
+
+</div>
+
+</section>
+<section>
+
+<h2 class="section-title">
+Transition Demo
+</h2>
+
+<div style="text-align:center">
+
+<button class="transition-btn">
+Hover Me
+</button>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2 class="section-title">
+Contact Us
+</h2>
+
+<div class="container">
+
+<form class="bg-white text-dark p-4 rounded">
+
+<input type="text"
+class="form-control mb-3"
+placeholder="Enter Name">
+
+<input type="email"
+class="form-control mb-3"
+placeholder="Enter Email">
+
+<input type="text"
+class="form-control mb-3"
+placeholder="College Name">
+
+<textarea
+class="form-control mb-3"
+rows="5"
+placeholder="Enter Message"></textarea>
+
+<button class="btn btn-primary w-100">
+Submit
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+<div id="login-popup" class="popup">
+
+<div class="popup-content">
+
+<a href="#" class="close-btn">
+&times;
+</a>
+
+<h2>Login Account</h2>
+
+<form>
+
+<input type="text"
+       class="form-control mb-3"
+       placeholder="Enter Name"
+       id="name">
+<label for="name" class="visually-hidden">Name</label>
+
+<button type="submit">
+Login
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<footer>
+
+<h3>
+Career Accelerator Pro
+</h3>
+
+<p>
+Learn • Build • Grow • Succeed
+</p>
+
+<p>
+© 2026 All Rights Reserved
+</p>
+
+</footer>
+
+</div>
+
+</body>
+
+</html>
